@@ -17,7 +17,8 @@ import java.util.logging.Logger;
  */
 public class UserDAO extends DBContext{
     public User getUserByUserName(String username){
-        String sql = "SELECT us.user_id id, us.username uname, us.password pass, us.full_name name, us.email email, us.gender gender, us.dob dob, us.created_at createat   FROM Users us WHERE username = ?";
+        String sql = "SELECT us.user_id id, us.username uname, us.password pass, us.full_name name, "
+                + "us.email email, us.gender gender, us.dob dob, us.created_at createat   FROM Users us WHERE username = ?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, username);
