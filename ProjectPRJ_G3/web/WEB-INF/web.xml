@@ -5,23 +5,53 @@
         <servlet-class>UserController.UserLogin</servlet-class>
     </servlet>
     <servlet>
+
+
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>AdminController.AdminLogin</servlet-class>
+</servlet>
+    <servlet>
+        <servlet-name>AddCourse</servlet-name>
+        <servlet-class>AdminController.AddCourse</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCourse</servlet-name>
+        <servlet-class>AdminController.EditCourse</servlet-class>
+
+</servlet>
+    <servlet>
         <servlet-name>CourseList</servlet-name>
         <servlet-class>UserController.CourseList</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DetailCourse</servlet-name>
         <servlet-class>UserController.DetailCourse</servlet-class>
+
     </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/adminlogin</url-pattern>
+</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCourse</servlet-name>
+        <url-pattern>/addcourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCourse</servlet-name>
+        <url-pattern>/editcourse</url-pattern>
+
+</servlet-mapping>
+    <servlet-mapping>
         <servlet-name>CourseList</servlet-name>
         <url-pattern>/courseList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DetailCourse</servlet-name>
-        <url-pattern>/courseDetail</url-pattern>
+        <url-pattern>/detailCourse</url-pattern>
     </servlet-mapping>
 </web-app>

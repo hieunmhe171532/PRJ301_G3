@@ -21,11 +21,11 @@ public class AdminDAO extends DBContext{
         String sql = "Select ad.admin_id id , ad.username uname, ad.password pass, ad.full_name name, ad.email email, ad.created_at createdat from Admins ad where username = ?";
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setString(1, sql);
+            stm.setString(1, username);
             ResultSet rs = stm.executeQuery();
             
             if (rs.next()) {
-                Admin admin = new Admin(rs.getInt("ID"), rs.getString("uname"), rs.getString("pass"), 
+                Admin admin = new Admin(rs.getInt("id"), rs.getString("uname"), rs.getString("pass"), 
                         rs.getString("name"), rs.getString("email"), rs.getDate("createdat"));
                 return admin;
             } 
