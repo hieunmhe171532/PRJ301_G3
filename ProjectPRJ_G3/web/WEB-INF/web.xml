@@ -6,12 +6,18 @@
     </servlet>
     <servlet>
 
+
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>AdminController.AdminLogin</servlet-class>
+</servlet>
+    <servlet>
         <servlet-name>AddCourse</servlet-name>
         <servlet-class>AdminController.AddCourse</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>EditCourse</servlet-name>
         <servlet-class>AdminController.EditCourse</servlet-class>
+
 </servlet>
     <servlet>
         <servlet-name>CourseList</servlet-name>
@@ -28,12 +34,17 @@
     </servlet-mapping>
     <servlet-mapping>
 
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/adminlogin</url-pattern>
+</servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AddCourse</servlet-name>
         <url-pattern>/addcourse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>EditCourse</servlet-name>
         <url-pattern>/editcourse</url-pattern>
+
 </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CourseList</servlet-name>
