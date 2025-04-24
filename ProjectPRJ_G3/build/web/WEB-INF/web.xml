@@ -17,6 +17,23 @@
         <url-pattern>/userlogin</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< Updated upstream
+=======
+
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/adminlogin</url-pattern>
+</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCourse</servlet-name>
+        <url-pattern>/addcourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCourse</servlet-name>
+        <url-pattern>/editcourse</url-pattern>
+
+</servlet-mapping>
+    <servlet-mapping>
+>>>>>>> Stashed changes
         <servlet-name>CourseList</servlet-name>
         <url-pattern>/courseList</url-pattern>
     </servlet-mapping>
