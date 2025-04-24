@@ -11,7 +11,7 @@ import java.util.Date;
  * @author hieum
  */
 public class Admin {
-    private int adminID;
+    private int admin_id;
     private String username;
     private String password;
     private String fullName;
@@ -21,8 +21,8 @@ public class Admin {
     public Admin() {
     }
 
-    public Admin(int adminID, String username, String password, String fullName, String email, Date createdAt) {
-        this.adminID = adminID;
+    public Admin(int admin_id, String username, String password, String fullName, String email, Date createdAt) {
+        this.admin_id = admin_id;
         this.username = username;
         this.password = password;
         this.fullName = fullName;
@@ -30,13 +30,14 @@ public class Admin {
         this.createdAt = createdAt;
     }
 
-    public int getAdminID() {
-        return adminID;
+    public int getAdmin_id() {
+        return admin_id;
     }
 
-    public void setAdminID(int adminID) {
-        this.adminID = adminID;
+    public void setAdmin_id(int admin_id) {
+        this.admin_id = admin_id;
     }
+
 
     public String getUsername() {
         return username;
