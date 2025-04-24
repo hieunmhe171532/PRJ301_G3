@@ -32,9 +32,9 @@
                                 <td>${co.semester}</td>    
                                 <td>${co.department}</td>
                                 <td>
-                                    <a   name ="detail" href="courseDetail.jsp?courseID=${co.courseID}" class="btn btn-sm btn-outline-primary">
-                                        Detail
-                                    </a>
+                                   <a href="courseDetail?courseID=${co.courseID}" class="btn btn-sm btn-outline-primary">Detail</a>
+
+
                                 </td>
                             </tr>
                         </c:forEach>
