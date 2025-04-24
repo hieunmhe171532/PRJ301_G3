@@ -34,12 +34,10 @@
     </servlet-mapping>
     <servlet-mapping>
 
-
         <servlet-name>AdminLogin</servlet-name>
         <url-pattern>/adminlogin</url-pattern>
 </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>AddCourse</servlet-name>
         <url-pattern>/addcourse</url-pattern>
     </servlet-mapping>
@@ -55,6 +53,5 @@
     <servlet-mapping>
         <servlet-name>DetailCourse</servlet-name>
         <url-pattern>/detailCourse</url-pattern>
-
     </servlet-mapping>
 </web-app>

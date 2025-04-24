@@ -11,8 +11,6 @@ import java.util.Date;
  * @author hieum
  */
 public class Admin {
-    
-    
     private int adminID;
     private String username;
     private String password;
