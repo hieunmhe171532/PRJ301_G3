@@ -32,7 +32,7 @@
                                 <td>${co.semester}</td>    
                                 <td>${co.department}</td>
                                 <td>
-                                   <a href="courseDetail?courseID=${co.courseID}" class="btn btn-sm btn-outline-primary">Detail</a>
+                                   <a href="detailCourse?courseID=${co.courseID}" class="btn btn-sm btn-outline-primary">Detail</a>
 
 
                                 </td>
