@@ -25,6 +25,10 @@
         <servlet-class>UserController.DetailCourse</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>UserController.Register</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Enroll</servlet-name>
         <servlet-class>UserController.Enroll</servlet-class>
     </servlet>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>DetailCourse</servlet-name>
         <url-pattern>/detailCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Enroll</servlet-name>

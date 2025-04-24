@@ -2,7 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        
         <group>
+
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/UserView/HomePage.jsp</file>
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Dal/DBContext.java</file>
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/CourseList.java</file>
@@ -17,21 +19,13 @@
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/hahaha.jsp</file>
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/UserLogin.java</file>
         </group>
+
         <group>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/UserView/HomePage.jsp</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Dal/DBContext.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/CourseList.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/DetailCourse.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/AdminDAO.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/WEB-INF/web.xml</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/index.html</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/META-INF/context.xml</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Course.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Admin.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/hahaha.jsp</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/UserLogin.java</file>
-        </group>
+            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/DetailCourse.java</file>
+            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Admin.java</file>
+            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
+            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/EditCourse.java</file>
+
         <group name="class">
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AddCourse.jsp</file>
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/AdminDAO.java</file>
@@ -41,6 +35,7 @@
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AdminHeader.jsp</file>
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/EditCourse.jsp</file>
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/EditCourse.java</file>
+
         </group>
     </open-files>
 </project-private>
