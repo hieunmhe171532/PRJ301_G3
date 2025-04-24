@@ -9,5 +9,15 @@
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/UserView/Test1.jsp</file>
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/UserView/Login.jsp</file>
         </group>
+        <group>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/META-INF/context.xml</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/AdminDAO.java</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/WEB-INF/web.xml</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Course.java</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Admin.java</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/index.html</file>
+            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/UserLogin.java</file>
+        </group>
     </open-files>
 </project-private>
