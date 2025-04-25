@@ -34,40 +34,57 @@
                             <div class="form-block">
                                 <div class="text-center mb-5">
                                     <h3 style="color: red">${requestScope.error}</h3>
-                                    <h3>Login to <strong>Shop</strong></h3>
+                                    <h3>Register<strong></strong></h3>
                                     <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                                 </div>
                                 <form class="register-form" name="register-form" action="register" method="post" onsubmit="return validateForm()">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="">
-                                        <div class="badge badge-danger" id="userFail"></div>
-                                    </div>
+
                                     <div class="form-group">
                                         <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Fullname" required="">
                                         <div class="badge badge-danger" id="fullnameFail"></div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="">
+                                        <div class="badge badge-danger" id="userFail"></div>
+                                    </div>
+
                                     <div class="form-group">
                                         <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
+                                    </div>
 
-                                    </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone number" required="">
-                                        <div class="badge badge-danger" id="phoneFail"></div>
+                                        <select class="form-control" name="gender" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="true">Male</option>
+                                            <option value="false">Female</option>
+                                        </select>
                                     </div>
+                                    
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="address" id="address" placeholder="Address" required="">
-
-                                    </div>
+                                        <input type="date" class="form-control" name="dob" required>
+                                    </div>                                    
+                                    
+                                    <!--                                                                            <div class="form-group">
+                                                                                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone number" required="">
+                                                                                                                    <div class="badge badge-danger" id="phoneFail"></div>
+                                                                                                                </div>
+                                                                                                                <div class="form-group">
+                                                                                                                    <input type="text" class="form-control" name="address" id="address" placeholder="Address" required="">
+                                                                            
+                                                                                                                </div>-->
                                     <div class="row md-12">
                                         <div class="form-group col-md-6">
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
                                             <div class="badge badge-danger" id="passwordFail"></div>
                                         </div>
+                                        
                                         <div class="form-group col-md-6">
                                             <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Re-password" required="">
                                             <div class="badge badge-danger" id="repassFail"></div>
                                         </div>
                                     </div>
+                                    
                                     <button type="submit" class="btn btn-block btn-outline-danger submit"> Register </button>
                                     <span class="ml-auto"><a href="signin" class="forgot-pass">Login</a></span> 
                                 </form>
