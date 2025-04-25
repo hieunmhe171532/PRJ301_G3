@@ -32,6 +32,10 @@
         <servlet-name>Enroll</servlet-name>
         <servlet-class>UserController.Enroll</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetList</servlet-name>
+        <servlet-class>AdminController.GetList</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
@@ -63,5 +67,9 @@
     <servlet-mapping>
         <servlet-name>Enroll</servlet-name>
         <url-pattern>/enroll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetList</servlet-name>
+        <url-pattern>/getlist</url-pattern>
     </servlet-mapping>
 </web-app>
