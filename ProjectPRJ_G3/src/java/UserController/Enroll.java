@@ -1,85 +1,68 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package UserController;
 
+import DAO.CourseDAO;
+import DAO.EnrollmentDAO;
+import Model.Course;
+import Model.Enrollment;
+import Model.EnrollmentStatus;
+import Model.User;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 
-/**
- *
- * @author hieum
- */
 public class Enroll extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Enroll</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Enroll at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+   @Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    String courseID_raw = request.getParameter("courseID");
+    HttpSession session = request.getSession();
+   
+    User currentUser = (User) session.getAttribute("user");
+
+    String message = "";
+    if (currentUser == null) {
+//        message = "❌ You are not logged in!";
+//        request.setAttribute("message", message);
+        request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
+        return;
+    }
+    
+    try {
+        int courseID = Integer.parseInt(courseID_raw);
+        CourseDAO cdao = new CourseDAO();
+        Course course = cdao.getCourseById(courseID);
+
+        if (course == null) {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Course not found");
+            return;
         }
+
+        EnrollmentDAO edao = new EnrollmentDAO();
+        boolean alreadyEnrolled = edao.isUserAlreadyEnrolled(currentUser.getUserID(), courseID);
+
+        if (alreadyEnrolled) {
+            message = "❌ You have already enrolled in this course!";
+        } else {
+            Enrollment enrollment = new Enrollment();
+            enrollment.setUser(currentUser);
+            enrollment.setCourse(course);
+            enrollment.setEnrolledAt(new Date());
+            enrollment.setNote("Pending enrollment");
+            enrollment.setStatus(new EnrollmentStatus(1, "Pending")); // Pending status
+
+            boolean success = edao.insertEnrollment(enrollment);
+            message = success ? "✅ Successfully enrolled in course!" : "❌ Failed to enroll.";
+        }
+
+    } catch (NumberFormatException e) {
+        message = "⚠ Invalid course ID.";
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+    // Gửi thông báo và chuyển tiếp đến trang chi tiết khóa học
+    request.setAttribute("message", message);
+    request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
+}
 }
