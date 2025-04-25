@@ -12,6 +12,16 @@
     <div class="container py-5">
         <h2 class="text-center mb-5 text-primary">📘 Course Detail</h2>
 
+        <!-- Hiển thị message nếu có -->
+        <c:if test="${not empty message}">
+            <div class="alert 
+                ${message.startsWith('✅') ? 'alert-success' : 'alert-danger'} 
+                text-center shadow-sm fw-semibold fs-5">
+                ${message}
+            </div>
+        </c:if>
+
+        <!-- Nếu có dữ liệu courseDetail -->
         <c:if test="${not empty courseDetail}">
             <div class="card shadow-lg border-0">
                 <div class="card-body">
@@ -60,6 +70,7 @@
             </div>
         </c:if>
 
+        <!-- Nếu không có dữ liệu -->
         <c:if test="${empty courseDetail}">
             <div class="alert alert-danger text-center p-4 shadow-sm">
                 ❌ Course not found or an error occurred.

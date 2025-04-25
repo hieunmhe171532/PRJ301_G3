@@ -58,6 +58,7 @@ public class CourseList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         List<Course> listofCourse = new CourseDAO().getAllCourse();
         request.setAttribute("listofCourse", listofCourse); // Đúng là setAttribute, không phải getServletContext
         request.getRequestDispatcher("hahaha.jsp").forward(request, response);
