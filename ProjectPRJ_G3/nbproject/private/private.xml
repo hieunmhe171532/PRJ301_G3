@@ -2,20 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="class">
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AddCourse.jsp</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/AdminDAO.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Course.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Admin.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AdminHeader.jsp</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/EditCourse.jsp</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/EditCourse.java</file>
-        </group>
         <group>
             <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/Register.java</file>
             <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/web/UserView/Register.jsp</file>
         </group>
         <group/>
+        <group name="class">
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/AdminLogin.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AddCourse.jsp</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Course.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Enrollment.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Admin.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/AddCourse.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/User.java</file>
+        </group>
     </open-files>
 </project-private>
