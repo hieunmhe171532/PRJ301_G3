@@ -32,6 +32,18 @@
         <servlet-name>Enroll</servlet-name>
         <servlet-class>UserController.Enroll</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EnrollmentStatusDAO</servlet-name>
+        <servlet-class>DAO.EnrollmentStatusDAO</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllEnrollments</servlet-name>
+        <servlet-class>AllEnrollments</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllEnrollment</servlet-name>
+        <servlet-class>UserController.AllEnrollment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
@@ -63,5 +75,13 @@
     <servlet-mapping>
         <servlet-name>Enroll</servlet-name>
         <url-pattern>/enroll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EnrollmentStatusDAO</servlet-name>
+        <url-pattern>/enrollmentStatusDAO</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllEnrollment</servlet-name>
+        <url-pattern>/AllEnrollment</url-pattern>
     </servlet-mapping>
 </web-app>
