@@ -7,8 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-        <!--        <link rel="stylesheet" href="fonts/icomoon/style.css">-->
-
         <link rel="stylesheet" href="css/owl.carousel.min.css">
 
         <!-- Bootstrap CSS -->
@@ -16,8 +14,8 @@
               integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
         <!-- Style -->
-        <link rel="stylesheet" type="text/css" href="css/signIn.css">
-        <link rel="stylesheet" type="text/css" href="css/signUp.css">
+<!--        <link rel="stylesheet" type="text/css" href="css/signIn.css">
+        <link rel="stylesheet" type="text/css" href="css/signUp.css">-->
 
         <title>Register</title>
     </head>
@@ -33,60 +31,54 @@
                         <div class="col-md-6">
                             <div class="form-block">
                                 <div class="text-center mb-5">
-                                    <h3 style="color: red">${requestScope.error}</h3>
+
                                     <h3>Register<strong></strong></h3>
                                     <!-- <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p> -->
                                 </div>
                                 <form class="register-form" name="register-form" action="register" method="post" onsubmit="return validateForm()">
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="fullname" id="fullname" placeholder="Fullname" required="">
+                                        <input type="text" class="form-control" name="fullname" id="fullname" value="${param.fullname}" placeholder="Fullname" required="">
                                         <div class="badge badge-danger" id="fullnameFail"></div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" required="">
+                                        <input type="text" class="form-control" name="username" id="username" value="${param.username}" placeholder="Username" required="">
                                         <div class="badge badge-danger" id="userFail"></div>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
+                                        <input type="email" class="form-control" name="email" id="email" value="${param.email}" placeholder="Email" required="">
                                     </div>
 
                                     <div class="form-group">
                                         <select class="form-control" name="gender" required>
                                             <option value="">Select Gender</option>
-                                            <option value="true">Male</option>
-                                            <option value="false">Female</option>
+                                            <option value="true" ${param.gender == 'true' ? 'selected' : ''}>Male</option>
+                                            <option value="false"${param.gender == 'true' ? 'selected' : ''}>Female</option>
                                         </select>
                                     </div>
                                     
                                     <div class="form-group">
-                                        <input type="date" class="form-control" name="dob" required>
+                                        <input type="date" class="form-control" name="dob" value="${param.dob}" required>
                                     </div>                                    
-                                    
-                                    <!--                                                                            <div class="form-group">
-                                                                                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone number" required="">
-                                                                                                                    <div class="badge badge-danger" id="phoneFail"></div>
-                                                                                                                </div>
-                                                                                                                <div class="form-group">
-                                                                                                                    <input type="text" class="form-control" name="address" id="address" placeholder="Address" required="">
-                                                                            
-                                                                                                                </div>-->
+                        
                                     <div class="row md-12">
                                         <div class="form-group col-md-6">
-                                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+                                            <input type="password" class="form-control" name="password" id="password" value="${param.password}" placeholder="Password" required="">
                                             <div class="badge badge-danger" id="passwordFail"></div>
                                         </div>
                                         
                                         <div class="form-group col-md-6">
-                                            <input type="password" class="form-control" name="repassword" id="repassword" placeholder="Re-password" required="">
+                                            <input type="password" class="form-control" name="repassword" id="repassword" value="${param.repassword}" placeholder="Re-password" required="">
                                             <div class="badge badge-danger" id="repassFail"></div>
                                         </div>
                                     </div>
+                                    <div style="color: red">${error}</div>
+                                    <br>
                                     
                                     <button type="submit" class="btn btn-block btn-outline-danger submit"> Register </button>
-                                    <span class="ml-auto"><a href="signin" class="forgot-pass">Login</a></span> 
+                                    <span class="ml-auto"><a href="userlogin" class="forgot-pass">Login</a></span> 
                                 </form>
                             </div>
                         </div>
@@ -99,10 +91,10 @@
 
 
 
-        <script src="js/jquery-3.2.1.min.js"></script>
+<!--        <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <!--        <script src="js/main.js"></script>-->
-        <script src="js/signupValidate.js"></script>
+                <script src="js/main.js"></script>
+        <script src="js/signupValidate.js"></script>-->
     </body>
 </html>
