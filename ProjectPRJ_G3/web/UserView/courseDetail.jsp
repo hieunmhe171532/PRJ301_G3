@@ -33,7 +33,7 @@
                         <tbody>
                             <tr>
                                 <th>Course ID</th>
-                                <td>${courseDetail.courseID}</td>
+                                <td >${courseDetail.courseID}</td>
                             </tr>
                             <tr>
                                 <th>Department</th>
