@@ -61,7 +61,7 @@ public class AdminLogin extends HttpServlet {
         if (err.isEmpty()) {
             HttpSession session = request.getSession();
             session.setAttribute("admin", admin);
-            response.sendRedirect("AdminView/AddCourse.jsp");
+            response.sendRedirect("getlist");
         } else {
             request.setAttribute("err", err);
             request.setAttribute("username", username);
