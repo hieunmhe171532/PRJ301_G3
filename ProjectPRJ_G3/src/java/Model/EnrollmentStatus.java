@@ -21,6 +21,11 @@ public class EnrollmentStatus {
         this.statusName = statusName;
     }
 
+    public EnrollmentStatus(int statusID) {
+        this.statusID = statusID;
+    }
+    
+
     public int getStatusID() {
         return statusID;
     }
@@ -36,6 +41,8 @@ public class EnrollmentStatus {
     public void setStatusName(String statusName) {
         this.statusName = statusName;
     }
+
+    
     
     
 

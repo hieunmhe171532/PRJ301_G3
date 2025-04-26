@@ -46,6 +46,14 @@ public class Course {
         this.maxStudent = maxStudent;
     }
 
+    public Course(int courseID, String courseName) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+    }
+    
+    
+
+
     public int getCourseID() {
         return courseID;
     }

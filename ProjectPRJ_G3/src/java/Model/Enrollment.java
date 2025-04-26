@@ -22,6 +22,12 @@ public class Enrollment {
     public Enrollment() {
     }
 
+    public Enrollment(int enrollmentID, String note, Date enrolledAt) {
+        this.enrollmentID = enrollmentID;
+        this.note = note;
+        this.enrolledAt = enrolledAt;
+    }
+    
     public Enrollment(int enrollmentID, User user, Course course, String note, Date enrolledAt, Admin admin, EnrollmentStatus status) {
         this.enrollmentID = enrollmentID;
         this.user = user;

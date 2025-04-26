@@ -22,8 +22,8 @@
     <c:forEach var="e" items="${enrollments}" varStatus="i">
         <tr>
             <td>${i.index + 1}</td>
-            
-           <td>${e.user.getFullName()}</td>
+            <td>${e.getEnrollmentID}</td>
+           <td>${e.user.getUserName}</td>
             <td>${e.course.getCourseName()}</td>
             <td>${e.status.getStatusName()}</td>
             <td>${e.getNote()}</td>
