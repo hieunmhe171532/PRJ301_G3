@@ -13,56 +13,40 @@ import java.util.Date;
 
 public class Enroll extends HttpServlet {
 
-   @Override
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String coureID = request.getParameter("courseID");
+        String courseName = request.getParameter("courseName");
+        try {
 
-    String courseID_raw = request.getParameter("courseID");
-    HttpSession session = request.getSession();
-   
-    User currentUser = (User) session.getAttribute("user");
+            Course c = new Course(Integer.parseInt(coureID), courseName);
 
-    String message = "";
-    if (currentUser == null) {
-//        message = "❌ You are not logged in!";
-//        request.setAttribute("message", message);
-        request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
-        return;
-    }
-    
-    try {
-        int courseID = Integer.parseInt(courseID_raw);
-        CourseDAO cdao = new CourseDAO();
-        Course course = cdao.getCourseById(courseID);
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
 
-        if (course == null) {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND, "Course not found");
-            return;
+            if (user == null) {
+                response.sendRedirect("userlogin");
+                return;
+            }
+
+            Enrollment e = new Enrollment();
+            e.setUser(user);
+            e.setCourse(c);
+
+            Enrollment addEnroll = new EnrollmentDAO().insertEnrollment(e);
+
+            if (addEnroll != null) {
+                request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
+            } else {
+                request.setAttribute("error", "Thêm khóa học thất bại!");
+                request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
+            }
+
+        } catch (Exception e) {
+            request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
+
         }
 
-        EnrollmentDAO edao = new EnrollmentDAO();
-        boolean alreadyEnrolled = edao.isUserAlreadyEnrolled(currentUser.getUserID(), courseID);
-
-        if (alreadyEnrolled) {
-            message = "❌ You have already enrolled in this course!";
-        } else {
-            Enrollment enrollment = new Enrollment();
-            enrollment.setUser(currentUser);
-            enrollment.setCourse(course);
-            enrollment.setEnrolledAt(new Date());
-            enrollment.setNote("Pending enrollment");
-            enrollment.setStatus(new EnrollmentStatus(1, "Pending")); // Pending status
-
-            boolean success = edao.insertEnrollment(enrollment);
-            message = success ? "✅ Successfully enrolled in course!" : "❌ Failed to enroll.";
-        }
-
-    } catch (NumberFormatException e) {
-        message = "⚠ Invalid course ID.";
     }
-
-    // Gửi thông báo và chuyển tiếp đến trang chi tiết khóa học
-    request.setAttribute("message", message);
-    request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
-}
 }

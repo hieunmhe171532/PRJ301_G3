@@ -4,7 +4,7 @@
  */
 package Model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
@@ -36,6 +36,11 @@ public class Enrollment {
         this.enrolledAt = enrolledAt;
         this.admin = admin;
         this.status = status;
+    }
+
+    public Enrollment(User user, Course course) {
+        this.user = user;
+        this.course = course;
     }
 
     public int getEnrollmentID() {
