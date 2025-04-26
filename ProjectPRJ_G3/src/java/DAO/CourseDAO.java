@@ -103,6 +103,33 @@ public class CourseDAO extends DBContext {
         return null;
     }
 
+    public boolean updateCourse(Course c) {
+        String sql = "UPDATE Courses SET "
+                + "course_name = ?, "
+                + "description = ?, "
+                + "department = ?, "
+                + "credits = ?, "
+                + "semester = ?, "
+                + "max_students = ? "
+                + "WHERE course_id = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, c.getCourseName());
+            stm.setString(2, c.getDescription());
+            stm.setString(3, c.getDepartment());
+            stm.setInt(4, c.getCredit());
+            stm.setString(5, c.getSemester());
+            stm.setInt(6, c.getMaxStudent());
+            stm.setInt(7, c.getCourseID());
+
+            int rowsAffected = stm.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         List<Course> list = new CourseDAO().getAllCourse();
         for (Course course : list) {

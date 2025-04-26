@@ -51,7 +51,7 @@
                                 <td>${c.admin.getFullName()}</td>
                                 <td>${c.getCreatedAt()}</td>
                                 <td>
-                                    <a href="addcourse">
+                                    <a href="editcourse?id=${c.courseID}"">
                                         <input type="button" value="Edit" />
                                     </a>
                                 </td>

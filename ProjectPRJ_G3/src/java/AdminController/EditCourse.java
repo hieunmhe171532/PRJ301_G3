@@ -4,6 +4,8 @@
  */
 package AdminController;
 
+import DAO.CourseDAO;
+import Model.Course;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,66 +19,54 @@ import java.io.PrintWriter;
  */
 public class EditCourse extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EditCourse</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EditCourse at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String courseID = request.getParameter("id");
+        try {
+            int courseID1 = Integer.parseInt(courseID);
+            Course course = new CourseDAO().getCourseById(courseID1);
+            request.setAttribute("course", course);
+        } catch (Exception e) {
+            response.sendRedirect("getlist");
+        }
+
+        request.getRequestDispatcher("/AdminView/EditCourse.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String courseID = request.getParameter("CourseID");
+        String name = request.getParameter("CourseName");
+        String description = request.getParameter("Description");
+        String department = request.getParameter("Department");
+        String credit = request.getParameter("Credit");
+        String semester = request.getParameter("Semester");
+        String maxStu = request.getParameter("MaxStudent");
+
+        try {
+            int courseID1 = Integer.parseInt(courseID);
+            int credit1 = Integer.parseInt(credit);
+            int maxStu1 = Integer.parseInt(maxStu);
+
+            Course course = new Course(courseID1, name, description, department, credit1, semester, maxStu1);
+            boolean updated = new CourseDAO().updateCourse(course);
+
+            if (updated) {
+                response.sendRedirect("getlist");
+            } else {
+                request.setAttribute("error", "Update failed!");
+                request.getRequestDispatcher("/AdminView/EditCourse.jsp").forward(request, response);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(); // luôn in lỗi ra
+            request.setAttribute("error", "Có lỗi xảy ra: " + e.getMessage());
+            request.getRequestDispatcher("/AdminView/EditCourse.jsp").forward(request, response);
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -25,37 +25,35 @@
                         </div>
                         <div class="card-body">
                             <form action="editcourse" method="POST">
-                                <div class="mb-3">
-                                    <label for="CourseID" class="form-label">Course ID</label>
-                                    <input type="text" class="form-control" name="CourseID" id="CourseID" required>
-                                </div>
+                                <input type="hidden" name="CourseID" value="${course.courseID}" />
+                                
                                 <div class="mb-3">
                                     <label for="CourseName" class="form-label">Course Name</label>
-                                    <input type="text" class="form-control" name="CourseName" id="CourseName" required>
+                                    <input type="text" class="form-control" name="CourseName" id="CourseName" value="${course.getCourseName()}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="Description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" name="Description" id="Description">
+                                    <input type="text" class="form-control" name="Description" id="Description" value="${course.getDescription()}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="Department" class="form-label">Department</label>
-                                    <input type="text" class="form-control" name="Department" id="Department">
+                                    <input type="text" class="form-control" name="Department" id="Department" value="${course.getDepartment()}" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Credit" class="form-label">Credit</label>
-                                    <input type="number" class="form-control" name="Credit" id="Credit" required>
+                                    <label for="Credit" class="form-label">Credit (Number only)</label>
+                                    <input type="number" class="form-control" name="Credit" id="Credit" value="${course.getCredit()}" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Semester" class="form-label">Semester</label>
-                                    <input type="number" class="form-control" name="Semester" id="Semester" required>
+                                    <label for="Semester" class="form-label">Semester  (Number only)</label>
+                                    <input type="number" class="form-control" name="Semester" id="Semester" value="${course.getSemester()}" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="MaxStudent" class="form-label">Max Students</label>
-                                    <input type="number" class="form-control" name="MaxStudent" id="MaxStudent" required>
+                                    <label for="MaxStudent" class="form-label">Max Students  (Number only)</label>
+                                    <input type="number" class="form-control" name="MaxStudent" id="MaxStudent" value="${course.getMaxStudent()}" required>
                                 </div>
                                 <div class="d-flex justify-content-between">
-                                    <button type="submit" class="btn btn-success">Add Course</button>
-                                    <button type="reset" class="btn btn-secondary">Reset</button>
+                                    <button type="submit" class="btn btn-success">Update Course</button>
+                                    <a href="getlist" class="btn btn-secondary">Cancel</a>
                                 </div>
                             </form>
                         </div>
