@@ -1,0 +1,11 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 26, 2025, 5:36:04 PM
+    Author     : admin
+*/
+#userFail, #fullnameFail, #phoneFail, #repassFail {
+     display: none;
+}
