@@ -10,13 +10,16 @@
     </head>
     <body class="bg-light">
 
-        
+
         <jsp:include page="/AdminView/AdminHeader.jsp" />
 
-        
+
         <div class="container">
             <h2 class="text-center mb-4">Danh sách khóa học</h2>
             <div class="table-responsive">
+                <a href="addcourse">
+                    <input type="button" value="Add Course" />
+                </a>
                 <table class="table table-bordered table-striped table-hover align-middle">
                     <thead class="table-dark text-center">
                         <tr>
@@ -34,24 +37,24 @@
                     </thead>
                     <tbody>
                         <c:forEach var="c" items="${listofCourse}" varStatus="stt">
-                    
-                        <tr>
-                            <td>${stt.index+1}</td>
-                            <td>${c.courseID}</td>
-                            <td>${c.getCourseName()}</td>
-                            <td>${c.getDescription()}</td>
-                            <td>${c.getDepartment()}</td>
-                            <td>${c.getCredit()}</td>
-                            <td>${c.getSemester()}</td>
-                            <td>${c.getMaxStudent()}</td>
-                            <td>${c.admin.getFullName()}</td>
-                            <td>${c.getCreatedAt()}</td>
-                            
-                            
 
-                        </tr>
-                    
-                </c:forEach>
+                            <tr>
+                                <td>${stt.index+1}</td>
+                                <td>${c.courseID}</td>
+                                <td>${c.getCourseName()}</td>
+                                <td>${c.getDescription()}</td>
+                                <td>${c.getDepartment()}</td>
+                                <td>${c.getCredit()}</td>
+                                <td>${c.getSemester()}</td>
+                                <td>${c.getMaxStudent()}</td>
+                                <td>${c.admin.getFullName()}</td>
+                                <td>${c.getCreatedAt()}</td>
+
+
+
+                            </tr>
+
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
