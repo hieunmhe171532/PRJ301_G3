@@ -48,6 +48,14 @@ public class AddCourse extends HttpServlet {
         String Semester = request.getParameter("Semester");
         String MaxStudent = request.getParameter("MaxStudent");
         String err = "";
+        String good = "";
+        
+        request.setAttribute("CourseName",CourseName);
+        request.setAttribute("Description",Description);
+        request.setAttribute("Department",Department);
+        request.setAttribute("Credit",Credit);
+        request.setAttribute("Semester",Semester);
+        request.setAttribute("MaxStudent",MaxStudent);
         try {
             int credit = Integer.parseInt(Credit);
             int maxStudent = Integer.parseInt(MaxStudent);
@@ -72,13 +80,14 @@ public class AddCourse extends HttpServlet {
             Course addedCourse = dao.addCourse(c);
 
             if (addedCourse != null) {
-                // Thành công -> chuyển về trang danh sách hoặc thông báo
-                request.getRequestDispatcher("/AdminView/AddCourse.jsp").forward(request, response);
+                good = "Add Thanh Cong";
+                request.setAttribute("good",good);
+                
             } else {
-                // Thêm thất bại -> forward đến trang lỗi hoặc hiển thị thông báo
+                
                 request.setAttribute("error", "Thêm khóa học thất bại!");
-                request.getRequestDispatcher("/AdminView/AddCourse.jsp").forward(request, response);
             }
+            request.getRequestDispatcher("/AdminView/AddCourse.jsp").forward(request, response);
 
         } catch (Exception e) {
             err = "Credit and Max Student are number";
