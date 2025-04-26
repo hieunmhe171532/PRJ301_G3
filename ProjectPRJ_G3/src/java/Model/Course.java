@@ -36,6 +36,13 @@ public class Course {
         this.admin = admin;
     }
 
+    public Course(int courseID, String courseName) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+    }
+    
+    
+
     public int getCourseID() {
         return courseID;
     }
