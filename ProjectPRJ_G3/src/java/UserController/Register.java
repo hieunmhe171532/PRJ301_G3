@@ -97,7 +97,7 @@ public class Register extends HttpServlet {
         user.setCreateAt(new Date(Calendar.getInstance().getTimeInMillis()));
 
         UserDAO userDAO = new UserDAO();
-        boolean isSuccess = userDAO.insertUser(user);
+        boolean isSuccess = userDAO.createUser(user);
 
         if (isSuccess == true) {
             response.sendRedirect("UserView/Login.jsp");
