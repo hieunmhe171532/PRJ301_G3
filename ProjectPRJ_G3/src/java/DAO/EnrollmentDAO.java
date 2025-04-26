@@ -50,35 +50,38 @@ public class EnrollmentDAO extends DBContext {
     }
 
     public List<Enrollment> getAllEnrollments() {
-        List<Enrollment> list = new ArrayList<>();
-        String sql = "select e.enrollment_id enrollid,u.user_id userid,u.username,c.course_id courseid, c.course_name,e.note note,e.enrolled_at enrolledat  , en.status_id statusid ,en.status_name statusname from Enrollments e\n"
-                + "join EnrollmentStatuses en on en.status_id = e.status_id\n"
-                + "join Users u on u.user_id =e.user_id\n"
-                + "join Courses c on c.course_id = e.course_id";
+    List<Enrollment> list = new ArrayList<>();
+    String sql = "SELECT e.enrollment_id enrollid, u.user_id userid, u.full_name fname, " +
+                 "c.course_id courseid, c.course_name coursename, e.note note, " +
+                 "e.enrolled_at enrolledat, en.status_id statusid, en.status_name statusname " +
+                 "FROM Enrollments e " +
+                 "JOIN EnrollmentStatuses en ON en.status_id = e.status_id " +
+                 "JOIN Users u ON u.user_id = e.user_id " +
+                 "JOIN Courses c ON c.course_id = e.course_id";
 
-        try {
-            PreparedStatement stm = connection.prepareStatement(sql);
-            ResultSet rs = stm.executeQuery();
-            while (rs.next()) {
-                User user = new User(rs.getInt("userid"), rs.getString("username"));  // Giả sử User có constructor (id, name)
-                Course course = new Course(rs.getInt("courseid"), rs.getString("coursename")); // Giả sử Course có constructor (id, name)
-                EnrollmentStatus enrollmentStatus = new EnrollmentStatus(rs.getInt("statusid"), rs.getString("statusname"));
+    try {
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
+        while (rs.next()) {
+            User user = new User(rs.getInt("userid"), rs.getString("fname"));
+            Course course = new Course(rs.getInt("courseid"), rs.getString("coursename"));
+            EnrollmentStatus enrollmentStatus = new EnrollmentStatus(rs.getInt("statusid"), rs.getString("statusname"));
 
-                Enrollment enrollment = new Enrollment(
-                        rs.getInt("enrollid"),
-                        user,
-                        course,
-                        rs.getString("note"),
-                        rs.getDate("enrolledat"),
-                        null, // Admin đang để null
-                        enrollmentStatus
-                );
-                list.add(enrollment);
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
+            Enrollment enrollment = new Enrollment(
+                    rs.getInt("enrollid"),
+                    user,
+                    course,
+                    rs.getString("note"),
+                    rs.getDate("enrolledat"), // Sửa ở đây
+                    null,
+                    enrollmentStatus
+            );
+            list.add(enrollment);
         }
-        return list;
+    } catch (SQLException e) {
+        Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
     }
+    return list;
+}
 
 }
