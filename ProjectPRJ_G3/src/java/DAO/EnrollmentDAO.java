@@ -8,32 +8,33 @@ import Model.User;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EnrollmentDAO extends DBContext {
 
-   public boolean insertEnrollment(Enrollment e) {
-    // Cập nhật câu lệnh SQL để loại bỏ tham số null cho approved_by
-    String sql = "INSERT INTO Enrollments (user_id, course_id, note, enrolled_at, status_id) "
-            + "VALUES (?, ?, ?, GETDATE(), ?)"; // Sửa câu lệnh SQL
+    public boolean insertEnrollment(Enrollment e) {
+        // Cập nhật câu lệnh SQL để loại bỏ tham số null cho approved_by
+        String sql = "INSERT INTO Enrollments (user_id, course_id, note, enrolled_at, status_id) "
+                + "VALUES (?, ?, ?, GETDATE(), ?)"; // Sửa câu lệnh SQL
 
-    try (PreparedStatement stm = connection.prepareStatement(sql)) {
-        // Gán giá trị cho các tham số
-        stm.setInt(1, e.getUser().getUserID());  // user_id
-        stm.setInt(2, e.getCourse().getCourseID());  // course_id
-        stm.setString(3, e.getNote());  // note
-        stm.setTimestamp(4, new Timestamp(e.getEnrolledAt().getTime()));  // enrolled_at
-        stm.setInt(5, e.getStatus().getStatusID());  // status_id
+        try (PreparedStatement stm = connection.prepareStatement(sql)) {
+            // Gán giá trị cho các tham số
+            stm.setInt(1, e.getUser().getUserID());  // user_id
+            stm.setInt(2, e.getCourse().getCourseID());  // course_id
+            stm.setString(3, e.getNote());  // note
+            stm.setTimestamp(4, new Timestamp(e.getEnrolledAt().getTime()));  // enrolled_at
+            stm.setInt(5, e.getStatus().getStatusID());  // status_id
 
-        // Thực thi câu lệnh SQL và trả về kết quả
-        return stm.executeUpdate() > 0;
+            // Thực thi câu lệnh SQL và trả về kết quả
+            return stm.executeUpdate() > 0;
 
-    } catch (SQLException ex) {
-        ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
     }
-
-    return false;
-}
-
 
     public boolean isUserAlreadyEnrolled(int userID, int courseID) {
         String sql = "SELECT 1 FROM Enrollments WHERE user_id = ? AND course_id = ?";
@@ -47,52 +48,42 @@ public class EnrollmentDAO extends DBContext {
         }
         return false;
     }
+
     public List<Enrollment> getAllEnrollments() {
     List<Enrollment> list = new ArrayList<>();
-    String sql = "SELECT e.enrollment_id, e.note, e.enrolled_at, " +
-                 "u.user_id, u.full_name, " +
-                 "c.course_id, c.course_name, " +
-                 "s.status_id, s.status_name " +
+    String sql = "SELECT e.enrollment_id enrollid, u.user_id userid, u.full_name fname, " +
+                 "c.course_id courseid, c.course_name coursename, e.note note, " +
+                 "e.enrolled_at enrolledat, en.status_id statusid, en.status_name statusname " +
                  "FROM Enrollments e " +
-                 "JOIN Users u ON e.user_id = u.user_id " +
-                 "JOIN Courses c ON e.course_id = c.course_id " +
-                 "JOIN EnrollmentStatus s ON e.status_id = s.status_id";
+                 "JOIN EnrollmentStatuses en ON en.status_id = e.status_id " +
+                 "JOIN Users u ON u.user_id = e.user_id " +
+                 "JOIN Courses c ON c.course_id = e.course_id";
 
-    try (PreparedStatement stm = connection.prepareStatement(sql);
-         ResultSet rs = stm.executeQuery()) {
-
+    try {
+        PreparedStatement stm = connection.prepareStatement(sql);
+        ResultSet rs = stm.executeQuery();
         while (rs.next()) {
-            Enrollment e = new Enrollment();
+            User user = new User(rs.getInt("userid"), rs.getString("fname"));
+            Course course = new Course(rs.getInt("courseid"), rs.getString("coursename"));
+            EnrollmentStatus enrollmentStatus = new EnrollmentStatus(rs.getInt("statusid"), rs.getString("statusname"));
 
-            // Set user
-            User u = new User();
-            u.setUserID(rs.getInt("user_id"));
-            u.setFullName(rs.getString("full_name"));
-            e.setUser(u);
-
-            // Set course
-            Course c = new Course();
-            c.setCourseID(rs.getInt("course_id"));
-            c.setCourseName(rs.getString("course_name"));
-            e.setCourse(c);
-
-            // Set status
-            EnrollmentStatus status = new EnrollmentStatus();
-            status.setStatusID(rs.getInt("status_id"));
-            status.setStatusName(rs.getString("status_name"));
-            e.setStatus(status);
-
-            e.setEnrollmentID(rs.getInt("enrollment_id"));
-            e.setNote(rs.getString("note"));
-            e.setEnrolledAt(rs.getTimestamp("enrolled_at"));
-
-            list.add(e);
+            Enrollment enrollment = new Enrollment(
+                    rs.getInt("enrollid"),
+                    user,
+                    course,
+                    rs.getString("note"),
+                    rs.getDate("enrolledat"), // Sửa ở đây
+                    null,
+                    enrollmentStatus
+            );
+            list.add(enrollment);
         }
-
-    } catch (SQLException ex) {
-        ex.printStackTrace();
+    } catch (SQLException e) {
+        Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
     }
-
     return list;
 }
+   
+
+
 }

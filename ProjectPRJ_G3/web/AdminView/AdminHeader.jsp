@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="adminNavbar">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Course</a>
+                        <a class="nav-link" href="getlist">Course</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Enrollment</a>

@@ -14,7 +14,11 @@
     </head>
     <body class="bg-light">
         <jsp:include page="/AdminView/AdminHeader.jsp" />
-
+        
+        <a href="getlist">
+                    <input type="button" value="Back to list Course" />
+                </a>
+        
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6">
@@ -30,22 +34,22 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Description" class="form-label">Description</label>
-                                    <input type="text" class="form-control" name="Description" id="Description">
+                                    <input type="text" class="form-control" name="Description" id="Description" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="Department" class="form-label">Department</label>
-                                    <input type="text" class="form-control" name="Department" id="Department">
+                                    <input type="text" class="form-control" name="Department" id="Department" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Credit" class="form-label">Credit</label>
+                                    <label for="Credit" class="form-label">Credit  (Number only)</label>
                                     <input type="number" class="form-control" name="Credit" id="Credit" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="Semester" class="form-label">Semester</label>
+                                    <label for="Semester" class="form-label">Semester  (Number only)</label>
                                     <input type="number" class="form-control" name="Semester" id="Semester" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="MaxStudent" class="form-label">Max Students</label>
+                                    <label for="MaxStudent" class="form-label">Max Students  (Number only)</label>
                                     <input type="number" class="form-control" name="MaxStudent" id="MaxStudent" required>
                                 </div>
                                 <div class="d-flex justify-content-between">

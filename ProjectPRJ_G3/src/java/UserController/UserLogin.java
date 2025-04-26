@@ -43,7 +43,8 @@ public class UserLogin extends HttpServlet {
         if (err.isEmpty()) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("UserView/HomePage.jsp");
+
+            response.sendRedirect("courseList");
         } else {
             request.setAttribute("err", err);
             request.setAttribute("username", username);

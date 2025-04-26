@@ -36,6 +36,24 @@ public class Course {
         this.admin = admin;
     }
 
+    public Course(int courseID, String courseName, String description, String department, int credit, String semester, int maxStudent) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+        this.description = description;
+        this.department = department;
+        this.credit = credit;
+        this.semester = semester;
+        this.maxStudent = maxStudent;
+    }
+
+    public Course(int courseID, String courseName) {
+        this.courseID = courseID;
+        this.courseName = courseName;
+    }
+    
+    
+
+
     public int getCourseID() {
         return courseID;
     }

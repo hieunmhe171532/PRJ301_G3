@@ -35,6 +35,14 @@ public class User {
         this.createAt = createAt;
     }
 
+    public User(int userID, String fullName) {
+        this.userID = userID;
+        this.fullName = fullName;
+    }
+
+    
+    
+    
     
 
     public int getUserID() {

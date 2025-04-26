@@ -22,6 +22,7 @@ public class CourseDAO extends DBContext {
 
             while (rs.next()) {
                 Admin admin = new Admin(rs.getInt("adid"), rs.getString("fname"));
+
                 Course course = new Course(
                         rs.getInt("id"),
                         rs.getString("name"),
@@ -100,6 +101,50 @@ public class CourseDAO extends DBContext {
             Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public boolean updateCourse(Course c) {
+        String sql = "UPDATE Courses SET "
+                + "course_name = ?, "
+                + "description = ?, "
+                + "department = ?, "
+                + "credits = ?, "
+                + "semester = ?, "
+                + "max_students = ? "
+                + "WHERE course_id = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, c.getCourseName());
+            stm.setString(2, c.getDescription());
+            stm.setString(3, c.getDepartment());
+            stm.setInt(4, c.getCredit());
+            stm.setString(5, c.getSemester());
+            stm.setInt(6, c.getMaxStudent());
+            stm.setInt(7, c.getCourseID());
+
+            int rowsAffected = stm.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public void deleteCourse(int courseID) {
+        String sql1 = "delete from Enrollments where course_id = ?";
+        String sql2 = "delete from Courses where course_id = ?";
+
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql1);
+            stm.setInt(1, courseID);
+            stm.executeUpdate();
+
+            PreparedStatement stm1 = connection.prepareStatement(sql2);
+            stm1.setInt(1, courseID);
+            stm1.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public static void main(String[] args) {

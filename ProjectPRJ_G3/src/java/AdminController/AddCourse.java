@@ -73,11 +73,11 @@ public class AddCourse extends HttpServlet {
 
             if (addedCourse != null) {
                 // Thành công -> chuyển về trang danh sách hoặc thông báo
-                response.sendRedirect("courselist.jsp");
+                request.getRequestDispatcher("/AdminView/AddCourse.jsp").forward(request, response);
             } else {
                 // Thêm thất bại -> forward đến trang lỗi hoặc hiển thị thông báo
                 request.setAttribute("error", "Thêm khóa học thất bại!");
-                request.getRequestDispatcher("/AdminView/   AddCourse.jsp").forward(request, response);
+                request.getRequestDispatcher("/AdminView/AddCourse.jsp").forward(request, response);
             }
 
         } catch (Exception e) {
