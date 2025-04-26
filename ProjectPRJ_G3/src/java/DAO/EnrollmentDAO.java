@@ -106,4 +106,27 @@ public class EnrollmentDAO extends DBContext {
         return list;
     }
 
+    public boolean updateEnroll(Enrollment e) {
+        String sql = "update Enrollments set"
+                + "note = ?, "
+                + "approved_by = ?,"
+                + "status_id = ?"
+                + "where enrollment_id = ?";
+
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setString(1, e.getNote());
+            stm.setInt(2, e.getAdmin().getAdminID());
+            stm.setInt(3, e.getStatus().getStatusID());
+            stm.setInt(4, e.getEnrollmentID());
+          
+            int rowsAffected = stm.executeUpdate();
+            return rowsAffected > 0;
+
+         } catch (SQLException ex) {
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+
 }
