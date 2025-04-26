@@ -22,6 +22,7 @@ public class CourseDAO extends DBContext {
 
             while (rs.next()) {
                 Admin admin = new Admin(rs.getInt("adid"), rs.getString("fname"));
+
                 Course course = new Course(
                         rs.getInt("id"),
                         rs.getString("name"),

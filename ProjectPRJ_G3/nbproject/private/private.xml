@@ -7,6 +7,14 @@
             <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/web/UserView/Register.jsp</file>
         </group>
         <group/>
-        <group name="class"/>
+        <group name="class">
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AddCourse.jsp</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/AdminDAO.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/ListOfCourse.jsp</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Admin.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Dal/DBContext.java</file>
+            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/AddCourse.java</file>
+        </group>
     </open-files>
 </project-private>

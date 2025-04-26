@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>List of Courses</title>
+        <title>List of User</title>
         <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     </head>
@@ -15,11 +15,9 @@
 
 
         <div class="container">
-            <h2 class="text-center mb-4">Danh sách khóa học</h2>
+            <h2 class="text-center mb-4">Danh sách học sinh</h2>
             <div class="table-responsive">
-                <a href="addcourse">
-                    <input type="button" value="Add Course" />
-                </a>
+                
                 <table class="table table-bordered table-striped table-hover align-middle">
                     <thead class="table-dark text-center">
                         <tr>
@@ -33,7 +31,6 @@
                             <th>Max Student</th>
                             <th>Created By</th>
                             <th>Created At</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,11 +47,6 @@
                                 <td>${c.getMaxStudent()}</td>
                                 <td>${c.admin.getFullName()}</td>
                                 <td>${c.getCreatedAt()}</td>
-                                <td>
-                                    <a href="addcourse">
-                                        <input type="button" value="Edit" />
-                                    </a>
-                                </td>
 
 
 
