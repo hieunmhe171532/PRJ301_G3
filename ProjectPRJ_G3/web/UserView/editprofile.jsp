@@ -25,23 +25,23 @@
                         <form class="update-form" name="update-form" action="editprofile" method="post" onsubmit="return validateForm()">
 
                             <div class="form-group">
-                                <input type="text" class="form-control" name="fullname" value="${sessionScope.user.fullName}" placeholder="Full Name">
+                                <input type="text" class="form-control" id="fullName" name="fullName" value="${user.fullName}" placeholder="Full Name">
                                 <div style="color: red" id="fullnameFail"></div>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" name="username" value="${sessionScope.user.userName}" readonly placeholder="Username">
+                                <input type="text" class="form-control" id="username" name="username" value="${user.userName}" readonly placeholder="Username">
                             </div>
 
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" value="${sessionScope.user.email}" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" value="${user.email}" placeholder="Email">
                                 <div style="color: red" id="emailFail"></div>
                             </div>
 
                             <div class="form-group">
-                                <select class="form-control" name="gender">
-                                    <option value="true" ${sessionScope.user.gender ? 'selected' : ''}>Male</option>
-                                    <option value="false" ${!sessionScope.user.gender ? 'selected' : ''}>Female</option>
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="Male" ${user.gender ? 'selected' : ''}>Male</option>
+                                    <option value="Female" ${user.gender ? 'selected' : ''}>Female</option>
                                 </select>
                                 <div style="color: red" id="genderFail"></div>
                             </div>

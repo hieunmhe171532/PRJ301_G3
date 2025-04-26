@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/owl.carousel.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
               integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <title></title>
+        <title>Change password</title>
     </head>
     <body>
         <div class="container">
@@ -28,24 +28,24 @@
 
                                         <div class="form-group">
                                             <label>Current password:</label>
-                                            <input type="password" class="form-control" name="currentpass" placeholder="Enter current password">
+                                            <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="Enter current password">
                                             <div style="color: red" id="currentpassFail"></div>
                                         </div>
 
                                         <div class="form-group">
                                             <label>New password:</label>
-                                            <input type="password" class="form-control" name="newpass" placeholder="Enter new password">
+                                            <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter new password">
                                             <div style="color: red" id="newpassFail"></div>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Re-New password:</label>
-                                            <input type="password" class="form-control" name="renewpass" placeholder="Enter re-new password">
+                                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm password">
                                             <div style="color: red" id="renewpassFail"></div>
                                         </div>
                                         
                                         
-                                        <button href="profile" type="submit" class="btn btn-primary">Save Change</button>
+                                        <button type="submit" class="btn btn-primary">Save Change</button>
                                         <a href="profile" class="btn btn-secondary">Back to Profile</a>
                                     </div>
                                 </div>
