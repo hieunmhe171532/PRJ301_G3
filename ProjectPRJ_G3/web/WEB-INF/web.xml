@@ -48,6 +48,10 @@
         <servlet-name>AllEnrollment</servlet-name>
         <servlet-class>UserController.AllEnrollment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteCourse</servlet-name>
+        <servlet-class>AdminController.DeleteCourse</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
@@ -91,5 +95,9 @@
     <servlet-mapping>
         <servlet-name>AllEnrollment</servlet-name>
         <url-pattern>/AllEnrollment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteCourse</servlet-name>
+        <url-pattern>/deletecourse</url-pattern>
     </servlet-mapping>
 </web-app>

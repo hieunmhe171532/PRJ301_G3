@@ -130,6 +130,23 @@ public class CourseDAO extends DBContext {
         return false;
     }
 
+    public void deleteCourse(int courseID) {
+        String sql1 = "delete from Enrollments where course_id = ?";
+        String sql2 = "delete from Courses where course_id = ?";
+
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql1);
+            stm.setInt(1, courseID);
+            stm.executeUpdate();
+
+            PreparedStatement stm1 = connection.prepareStatement(sql2);
+            stm1.setInt(1, courseID);
+            stm1.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public static void main(String[] args) {
         List<Course> list = new CourseDAO().getAllCourse();
         for (Course course : list) {
