@@ -26,7 +26,7 @@
                         <a class="nav-link" href="getlist">Course</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Enrollment</a>
+                        <a class="nav-link" href="AllEnrollment">Enrollment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Student</a>
