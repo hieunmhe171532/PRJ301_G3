@@ -100,7 +100,7 @@
                             <td>${e.status.statusID}</td>
                             <td>${e.status.statusName}</td>
                             <td>
-                                <a href="editenrollment?eid=${e.enrollmentID}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="editenroll?eid=${e.enrollmentID}" class="btn btn-sm btn-warning">Edit</a>
                             </td>
                         </tr>
                     </c:forEach>
