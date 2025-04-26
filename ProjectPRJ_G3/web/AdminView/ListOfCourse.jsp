@@ -34,6 +34,7 @@
                             <th>Created By</th>
                             <th>Created At</th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,12 @@
                                 <td>
                                     <a href="editcourse?id=${c.courseID}"">
                                         <input type="button" value="Edit" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="deletecourse?id=${c.courseID}"
+                                       onclick="return confirm('Delete ${c.courseID} ?')"">
+                                        <input type="button" value="Delete" />
                                     </a>
                                 </td>
 
