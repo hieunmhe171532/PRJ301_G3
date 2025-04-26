@@ -21,14 +21,6 @@
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/EnrollmentDAO.java</file>
             <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/User.java</file>
         </group>
-        <group name="class">
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/AddCourse.jsp</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/CourseDAO.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Course.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/AddCourse.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/GetList.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/EditCourse.java</file>
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/EditCourse.jsp</file>
-        </group>
+        <group name="class"/>
     </open-files>
 </project-private>

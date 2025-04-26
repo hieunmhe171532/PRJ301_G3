@@ -62,7 +62,6 @@
         <servlet-class>UserController.ChangePassword</servlet-class>
         <servlet-name>DeleteCourse</servlet-name>
         <servlet-class>AdminController.DeleteCourse</servlet-class>
-
     </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
@@ -109,7 +108,6 @@
         <url-pattern>/AllEnrollment</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-
         <servlet-name>EditProfile</servlet-name>
         <url-pattern>/editprofile</url-pattern>
     </servlet-mapping>

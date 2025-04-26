@@ -13,27 +13,49 @@ import java.util.logging.Logger;
 
 public class EnrollmentDAO extends DBContext {
 
-    public boolean insertEnrollment(Enrollment e) {
-        // Cập nhật câu lệnh SQL để loại bỏ tham số null cho approved_by
-        String sql = "INSERT INTO Enrollments (user_id, course_id, note, enrolled_at, status_id) "
-                + "VALUES (?, ?, ?, GETDATE(), ?)"; // Sửa câu lệnh SQL
+//    public boolean insertEnrollment(Enrollment e) {
+//        // Cập nhật câu lệnh SQL để loại bỏ tham số null cho approved_by
+//        String sql = "INSERT INTO Enrollments (user_id, course_id, note, enrolled_at, status_id) "
+//                + "VALUES (?, ?, ?, GETDATE(), ?)"; // Sửa câu lệnh SQL
+//
+//        try (PreparedStatement stm = connection.prepareStatement(sql)) {
+//            // Gán giá trị cho các tham số
+//            stm.setInt(1, e.getUser().getUserID());  // user_id
+//            stm.setInt(2, e.getCourse().getCourseID());  // course_id
+//            stm.setString(3, e.getNote());  // note
+//            stm.setInt(4, e.getStatus().getStatusID());  // status_id
+//
+//            // Thực thi câu lệnh SQL và trả về kết quả
+//            return stm.executeUpdate() > 0;
+//
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//
+//        return false;
+//    }
+    public Enrollment insertEnrollment(Enrollment e) {
+        String sql = "INSERT INTO Enrollments (user_id, course_id, enrolled_at, status_id) "
+                + "VALUES (?, ?, GETDATE(), 1)";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, e.getUser().getUserID());
+            stm.setInt(2, e.getCourse().getCourseID());
 
-        try (PreparedStatement stm = connection.prepareStatement(sql)) {
-            // Gán giá trị cho các tham số
-            stm.setInt(1, e.getUser().getUserID());  // user_id
-            stm.setInt(2, e.getCourse().getCourseID());  // course_id
-            stm.setString(3, e.getNote());  // note
-            stm.setTimestamp(4, new Timestamp(e.getEnrolledAt().getTime()));  // enrolled_at
-            stm.setInt(5, e.getStatus().getStatusID());  // status_id
+            int rowsAffected = stm.executeUpdate();
 
-            // Thực thi câu lệnh SQL và trả về kết quả
-            return stm.executeUpdate() > 0;
-
+            if (rowsAffected > 0) {
+                ResultSet rs = stm.getGeneratedKeys();
+                if (rs.next()) {
+                    int generatedId = rs.getInt(1);
+                    e.setEnrollmentID(generatedId);
+                    return e;
+                }
+            }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return false;
+        return null;
     }
 
     public boolean isUserAlreadyEnrolled(int userID, int courseID) {
@@ -50,40 +72,38 @@ public class EnrollmentDAO extends DBContext {
     }
 
     public List<Enrollment> getAllEnrollments() {
-    List<Enrollment> list = new ArrayList<>();
-    String sql = "SELECT e.enrollment_id enrollid, u.user_id userid, u.full_name fname, " +
-                 "c.course_id courseid, c.course_name coursename, e.note note, " +
-                 "e.enrolled_at enrolledat, en.status_id statusid, en.status_name statusname " +
-                 "FROM Enrollments e " +
-                 "JOIN EnrollmentStatuses en ON en.status_id = e.status_id " +
-                 "JOIN Users u ON u.user_id = e.user_id " +
-                 "JOIN Courses c ON c.course_id = e.course_id";
+        List<Enrollment> list = new ArrayList<>();
+        String sql = "SELECT e.enrollment_id enrollid, u.user_id userid, u.full_name fname, "
+                + "c.course_id courseid, c.course_name coursename, e.note note, "
+                + "e.enrolled_at enrolledat, en.status_id statusid, en.status_name statusname "
+                + "FROM Enrollments e "
+                + "JOIN EnrollmentStatuses en ON en.status_id = e.status_id "
+                + "JOIN Users u ON u.user_id = e.user_id "
+                + "JOIN Courses c ON c.course_id = e.course_id";
 
-    try {
-        PreparedStatement stm = connection.prepareStatement(sql);
-        ResultSet rs = stm.executeQuery();
-        while (rs.next()) {
-            User user = new User(rs.getInt("userid"), rs.getString("fname"));
-            Course course = new Course(rs.getInt("courseid"), rs.getString("coursename"));
-            EnrollmentStatus enrollmentStatus = new EnrollmentStatus(rs.getInt("statusid"), rs.getString("statusname"));
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                User user = new User(rs.getInt("userid"), rs.getString("fname"));
+                Course course = new Course(rs.getInt("courseid"), rs.getString("coursename"));
+                EnrollmentStatus enrollmentStatus = new EnrollmentStatus(rs.getInt("statusid"), rs.getString("statusname"));
 
-            Enrollment enrollment = new Enrollment(
-                    rs.getInt("enrollid"),
-                    user,
-                    course,
-                    rs.getString("note"),
-                    rs.getDate("enrolledat"), // Sửa ở đây
-                    null,
-                    enrollmentStatus
-            );
-            list.add(enrollment);
+                Enrollment enrollment = new Enrollment(
+                        rs.getInt("enrollid"),
+                        user,
+                        course,
+                        rs.getString("note"),
+                        rs.getDate("enrolledat"), // Sửa ở đây
+                        null,
+                        enrollmentStatus
+                );
+                list.add(enrollment);
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
         }
-    } catch (SQLException e) {
-        Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
+        return list;
     }
-    return list;
-}
-   
-
 
 }
