@@ -35,10 +35,12 @@ public class User {
         this.createAt = createAt;
     }
 
-    public User(int userID, String userName) {
+    public User(int userID, String fullName) {
         this.userID = userID;
-        this.userName = userName;
+        this.fullName = fullName;
     }
+
+    
     
     
     
