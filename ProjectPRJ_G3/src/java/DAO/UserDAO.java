@@ -77,15 +77,14 @@ public class UserDAO extends DBContext {
     }
 
     public boolean updateUser(User user) throws Exception {
-        String sql = "UPDATE Users SET full_name = ?, email = ?, gender = ?, dob = ? WHERE user_id = ?";
+        String sql = "UPDATE Users SET full_name = ?, email = ?, gender = ? WHERE user_id = ?";
         int rows = 0;
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             stm.setString(1, user.getFullName());
             stm.setString(2, user.getEmail());
             stm.setBoolean(3, user.isGender());
-            stm.setDate(4, new java.sql.Date(user.getDob().getTime()));
-            stm.setInt(5, user.getUserID());
+            stm.setInt(4, user.getUserID());
             rows = stm.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -93,7 +92,7 @@ public class UserDAO extends DBContext {
         return rows > 0;
     }
     
-    public boolean changePassword (int userID, String newPassword)throws Exception{
+    public boolean changePassword (int userID, String newPassword) {
         String sql = "UPDATE Users SET password = ? WHERE user_id = ?";
         int rows = 0;
         try {
@@ -101,7 +100,7 @@ public class UserDAO extends DBContext {
             stm.setString(1, newPassword);
             stm.setInt(2, userID);
             rows = stm.executeUpdate();
-        } catch (Exception e) {
+        } catch (SQLException e) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return rows > 0;

@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -41,41 +42,42 @@ public class ChangePassword extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-       request.getRequestDispatcher("/UserView/changepassword.jsp").forward(request, response);
+    throws ServletException, IOException {   
+        request.getRequestDispatcher("/UserView/changepassword.jsp").forward(request, response);
     } 
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
-        String currentPassword = request.getParameter("currentpass");
-        String newPassword = request.getParameter("newpass");
-        String confirmPassword = request.getParameter("renewpassword");
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
 
-        if (!user.getPassword().equals(currentPassword)) {
-            request.setAttribute("error", "Current password is incorrect.");
-            request.getRequestDispatcher("/UserView/changepassword.jsp").forward(request, response);
+        if (user == null) {
+            response.sendRedirect("login.jsp");
             return;
         }
+        
+        String currentPass = request.getParameter("currentPassword");
+        String newPass = request.getParameter("newPassword");
+        String confirmPass = request.getParameter("confirmPassword");
 
-        if (!newPassword.equals(confirmPassword)) {
-            request.setAttribute("error", "New passwords do not match.");
+        if (!user.getPassword().equals(currentPass)) {
+            request.setAttribute("error", "Current password is incorrect!");
             request.getRequestDispatcher("/UserView/changepassword.jsp").forward(request, response);
-            return;
-        }
-
-        try {
-            UserDAO d = new UserDAO();
-            d.changePassword(user.getUserID(), newPassword);
-            user.setPassword(newPassword);
-            request.getSession().setAttribute("user", user);
-            request.setAttribute("success", "Password changed successfully.");
+        } else if (!newPass.equals(confirmPass)) {
+            request.setAttribute("error", "New password and Confirm password do not match!");
             request.getRequestDispatcher("/UserView/changepassword.jsp").forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendError(500);
+        } else {
+            boolean check = new UserDAO().changePassword(user.getUserID(), newPass);
+            if (check) {
+                user.setPassword(newPass); // update lại session
+                session.setAttribute("user", user);
+                request.setAttribute("success", "Password changed successfully!");
+            } else {
+                request.setAttribute("error", "Something went wrong. Try again!");
+            }
+            request.getRequestDispatcher("/UserView/changepassword.jsp").forward(request, response);
         }
     }
 
