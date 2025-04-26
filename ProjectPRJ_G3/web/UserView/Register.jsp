@@ -48,7 +48,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="email" class="form-control" name="email" id="email" value="${param.email}" placeholder="Email" >
+                                        <input type="text" class="form-control" name="email" id="email" value="${param.email}" placeholder="Email" >
                                         <div style="color: red" id="emailFail"></div>
 
                                     </div>
@@ -137,12 +137,16 @@
                 document.getElementById('userFail').innerText = 'username không được để trống';
                 isValid = false;
             } else if (!usernamePattern.test(username)) {
-                document.getElementById('userFail').innerText = 'Username chỉ chứa chữ, số và từ 4-16 ký tự';
+                document.getElementById('userFail').innerText = 'Username chỉ chứa chữ số, từ 4-16 ký tự';
                 isValid = false;
             }
 
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (email === '') {
                 document.getElementById('emailFail').innerText = 'Email không được để trống';
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById('emailFail').innerText = 'Email không đúng định dạng';
                 isValid = false;
             }
 
@@ -154,6 +158,13 @@
             if (dob === '') {
                 document.getElementById('dobFail').innerText = 'Vui lòng chọn ngày sinh';
                 isValid = false;
+            } else {
+                var today = new Date();
+                var selectedDate = new Date(dob);
+                if (selectedDate >= today) {
+                    document.getElementById('dobFail').innerText = 'Ngày sinh phải nhỏ hơn ngày hiện tại';
+                    isValid = false;
+                }
             }
 
             var passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,16}$/;
