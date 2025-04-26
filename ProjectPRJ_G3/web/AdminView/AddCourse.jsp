@@ -14,7 +14,11 @@
     </head>
     <body class="bg-light">
         <jsp:include page="/AdminView/AdminHeader.jsp" />
-
+        
+        <a href="getlist">
+                    <input type="button" value="Back to list Course" />
+                </a>
+        
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6">

@@ -11,6 +11,7 @@ import java.util.Date;
  * @author hieum
  */
 public class Admin {
+
     private int adminID;
     private String username;
     private String password;
@@ -30,9 +31,11 @@ public class Admin {
         this.createdAt = createdAt;
     }
 
-    public Admin(int adminID, String username) {
+    
+
+    public Admin(int adminID, String fullName) {
         this.adminID = adminID;
-        this.username = username;
+        this.fullName = fullName;
     }
 
     public int getAdminID() {
@@ -82,9 +85,5 @@ public class Admin {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-    
-    
-    
 
-    
 }
