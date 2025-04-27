@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     </head>
     <body>
-
+        <jsp:include page="/UserView/UserHeader.jsp" />
         <div class="half">
             <div class="bg order-1 order-md-2" style="background-image: url('images/banner-01.jpg');"></div>
             <div class="contents order-2 order-md-1">

@@ -151,6 +151,6 @@
     
     
     <welcome-file-list>
-        <welcome-file>courseList</welcome-file>
+        <welcome-file>userlogin</welcome-file>
     </welcome-file-list>
 </web-app>
