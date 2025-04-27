@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form action="adminlogin" method="POST">
-                            <div style="color: red" > ${err} </div>
+
                             <div class="form-outline mb-4">
                                 <input type="text" name="username" id="username" value="${param.username}" class="form-control form-control-lg"
                                        placeholder="Enter username" />
@@ -75,7 +75,7 @@
                                 </div>
                                 <a href="#!" class="text-body">Forgot password?</a>
                             </div>
-
+                            <div style="color: red" > ${err} </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <button type="submit" class="btn btn-primary btn-lg"
                                         style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>

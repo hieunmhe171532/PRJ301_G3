@@ -54,9 +54,9 @@ public class AdminLogin extends HttpServlet {
         Admin admin = dao.getAdminByUserName(username);
 
         if (admin == null) {
-            err = "Khong tim thay tai khoan";
+            err = "Không tìm thấy tài khoản !!";
         } else if (!admin.getPassword().equals(password)) {
-            err = "Sai mat khau!";
+            err = "Sai mật khẩu !!";
         }
         if (err.isEmpty()) {
             HttpSession session = request.getSession();
