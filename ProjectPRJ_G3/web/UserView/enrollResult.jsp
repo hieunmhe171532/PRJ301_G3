@@ -1,9 +1,15 @@
+<%-- 
+    Document   : enrollResult
+    Created on : Apr 27, 2025, 3:21:42 AM
+    Author     : le huy
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Course Detail</title>
+    <title>Enrollment Result</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -11,16 +17,23 @@
 <jsp:include page="/UserView/UserHeader.jsp" />
 
 <div class="container py-5">
-    <h2 class="text-center mb-5 text-primary">📘 Course Detail</h2>
+    <h2 class="text-center mb-5 text-primary">📘 Enrollment Result</h2>
 
-    <!-- Hiển thị thông báo thành công nếu có -->
+    <!-- Message alert -->
     <c:if test="${not empty message}">
-        <div class="alert alert-success text-center fw-semibold shadow-sm fs-5">
+        <div class="alert ${message.startsWith('✅') ? 'alert-success' : 'alert-danger'} text-center fw-semibold shadow-sm fs-5">
             ${message}
         </div>
     </c:if>
 
-    <!-- Kiểm tra nếu courseDetail không rỗng -->
+    <!-- Nếu không có courseDetail -->
+    <c:if test="${empty courseDetail}">
+        <div class="alert alert-danger text-center p-4 shadow-sm">
+            ❌ Course not found or an error occurred.
+        </div>
+    </c:if>
+
+    <!-- Display enrolled course info -->
     <c:if test="${not empty courseDetail}">
         <div class="card shadow-lg border-0">
             <div class="card-body">
@@ -38,12 +51,7 @@
                     </tbody>
                 </table>
 
-                <!-- Form Enroll POST -->
                 <div class="text-center mt-4">
-                    <form action="Enroll" method="get" class="d-inline">
-                        <input type="hidden" name="courseID" value="${courseDetail.courseID}">
-                        <button type="submit" class="btn btn-success btn-lg me-3">✅ Enroll</button>
-                    </form>
                     <a href="courseList" class="btn btn-outline-primary btn-lg">⬅ Back to Course List</a>
                 </div>
             </div>
