@@ -52,30 +52,30 @@
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form action="userlogin" method="POST">
-                            <div style="color: red" > ${err} </div>
+
                             <div class="form-outline mb-4">
-                                <input type="text" name="username" id="form3Example3" class="form-control form-control-lg"
+                                <input type="text" name="username" id="username"  value="${param.username}" class="form-control form-control-lg"
                                        placeholder="Enter username" />
-                                <label class="form-label" for="form3Example3">Username</label>
+                                <label class="form-label" for="username">Username</label>
                             </div>
                             
                             
                             <div class="form-outline mb-3">
-                                <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
+                                <input type="password" name="password" id="password" class="form-control form-control-lg"
                                        placeholder="Enter password" />
-                                <label class="form-label" for="form3Example4">Password</label>
+                                <label class="form-label" for="password">Password</label>
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" id="form2Example3" />
-                                    <label class="form-check-label" for="form2Example3">
+                                    <input class="form-check-input me-2" type="checkbox" id="remember" />
+                                    <label class="form-check-label" for="remember">
                                         Remember me
                                     </label>
                                 </div>
                                 <a href="#!" class="text-body">Forgot password?</a>
                             </div>
-
+                            <div style="color: red" > ${err} </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <button type="submit" class="btn btn-primary btn-lg"
                                         style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>

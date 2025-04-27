@@ -36,9 +36,9 @@ public class UserLogin extends HttpServlet {
         User user = dao.getUserByUserName(username);
 
         if (user == null) {
-            err = "Ko tim thay tai khoan";
+            err = "Không tìm thấy tài khoản !!";
         } else if (!user.getPassword().equals(password)) {
-            err = "Sai mat khau!";
+            err = "Sai mật khẩu !!";
         }
         if (err.isEmpty()) {
             HttpSession session = request.getSession();
