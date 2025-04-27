@@ -17,36 +17,32 @@
         <div class="container">
             <h2 class="text-center mb-4">Danh sách học sinh</h2>
             <div class="table-responsive">
-                
+
                 <table class="table table-bordered table-striped table-hover align-middle">
                     <thead class="table-dark text-center">
                         <tr>
                             <th>TT</th>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Department</th>
-                            <th>Credits</th>
-                            <th>Semester</th>
-                            <th>Max Student</th>
-                            <th>Created By</th>
-                            <th>Created At</th>
+                            <th>UserID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Enrollments</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="c" items="${listofCourse}" varStatus="stt">
+                        <c:forEach var="c" items="${listofUser}" varStatus="stt">
 
                             <tr>
                                 <td>${stt.index+1}</td>
-                                <td>${c.courseID}</td>
-                                <td>${c.getCourseName()}</td>
-                                <td>${c.getDescription()}</td>
-                                <td>${c.getDepartment()}</td>
-                                <td>${c.getCredit()}</td>
-                                <td>${c.getSemester()}</td>
-                                <td>${c.getMaxStudent()}</td>
-                                <td>${c.admin.getFullName()}</td>
-                                <td>${c.getCreatedAt()}</td>
+                                <td>${c.getUserID()}</td>
+                                <td>${c.getFullName()}</td>
+                                <td>${c.getEmail()}</td>
+                                <td class="text-center">${c.gender ? 'Male' : 'Female'}</td>
+                                <td>
+                                    <!-- Lấy enrollments cho user từ enrollmentsMap -->
+                                    ${enrollmentsMap[c.getUserID()]}
+                                </td>
 
 
 
