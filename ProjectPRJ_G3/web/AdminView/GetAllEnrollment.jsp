@@ -99,7 +99,9 @@
                             <a href="editenrollment?eid=${e.enrollmentID}" class="btn btn-sm btn-warning">Edit</a>
                         </td>
                     </tr>
-
+                </c:forEach> <!-- Đây là chỗ cần sửa để đóng thẻ -->
+            </tbody>
+        </table>
     </div>
 </div>
 
