@@ -29,7 +29,7 @@
                         <a class="nav-link" href="AllEnrollment">Enrollment</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Student</a>
+                        <a class="nav-link" href="listofuser">Student</a>
                     </li>
                 </ul>
                 <form class="d-flex">
