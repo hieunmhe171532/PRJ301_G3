@@ -141,6 +141,23 @@ public class EnrollmentDAO extends DBContext {
         return false;
     }
 
+    public int countAllEnrollbyUserID(int UserID) {
+        String sql = "SELECT COUNT(*) AS enrollment_count "
+                + "FROM Enrollments "
+                + "WHERE user_id = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, UserID);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("enrollment_count");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     public List<Enrollment> getEnrollmentsByUserID(User user) {
         List<Enrollment> list = new ArrayList<>();
         String sql = "SELECT e.enrollment_id AS enrollid, u.user_id AS userid, u.full_name AS fname, "
