@@ -38,6 +38,13 @@ public class Enrollment {
         this.status = status;
     }
 
+    public Enrollment(int enrollmentID, String note, Admin admin, EnrollmentStatus status) {
+        this.enrollmentID = enrollmentID;
+        this.note = note;
+        this.admin = admin;
+        this.status = status;
+    }
+    
     public Enrollment(User user, Course course) {
         this.user = user;
         this.course = course;
