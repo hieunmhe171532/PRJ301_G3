@@ -54,22 +54,22 @@
                         <form action="adminlogin" method="POST">
                             <div style="color: red" > ${err} </div>
                             <div class="form-outline mb-4">
-                                <input type="text" name="username" id="form3Example3" class="form-control form-control-lg"
+                                <input type="text" name="username" id="username" value="${param.username}" class="form-control form-control-lg"
                                        placeholder="Enter username" />
-                                <label class="form-label" for="form3Example3">Username</label>
+                                <label class="form-label" for="username">Username</label>
                             </div>
                             
                             
                             <div class="form-outline mb-3">
-                                <input type="password" name="password" id="form3Example4" class="form-control form-control-lg"
+                                <input type="password" name="password" id="password" class="form-control form-control-lg"
                                        placeholder="Enter password" />
-                                <label class="form-label" for="form3Example4">Password</label>
+                                <label class="form-label" for="password">Password</label>
                             </div>
 
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="form-check mb-0">
-                                    <input class="form-check-input me-2" type="checkbox" id="form2Example3" />
-                                    <label class="form-check-label" for="form2Example3">
+                                    <input class="form-check-input me-2" type="checkbox" id="remember" />
+                                    <label class="form-check-label" for="remember">
                                         Remember me
                                     </label>
                                 </div>
@@ -91,10 +91,10 @@
             <div
                 class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
                 <div class="text-white mb-3 mb-md-0">
-                    Copyright © 2020. All rights reserved.
+                    PRJ301
                 </div>
 
-                <div>
+<!--                <div>
                     <a href="#!" class="text-white me-4">
                         <i class="fab fa-facebook-f"></i>
                     </a>
@@ -107,7 +107,7 @@
                     <a href="#!" class="text-white">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                </div>
+                </div>-->
             </div>
         </section>
 
