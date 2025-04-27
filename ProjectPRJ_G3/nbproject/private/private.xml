@@ -11,39 +11,7 @@
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/src/java/AdminController/EditCourse.java</file>
             <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/AdminView/EditCourse.jsp</file>
         </group>
-        <group>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/UserDAO.java</file>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/web/UserView/Login.jsp</file>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/web/UserView/Register.jsp</file>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/Model/User.java</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/UserDAO.java</file>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/web/UserView/Login.jsp</file>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/web/UserView/Register.jsp</file>
-            <file>file:/C:/Users/admin/OneDrive/Documents/GitHub/PRJ301_G3/ProjectPRJ_G3/src/java/Model/User.java</file>
-        </group>
-        <group>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/AdminView/GetAllEnrollment.jsp</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/CourseList.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/WEB-INF/web.xml</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Enrollment.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/hahaha.jsp</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/EnrollmentDAO.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/User.java</file>
-        </group>
-        <group>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/AdminView/GetAllEnrollment.jsp</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Dal/DBContext.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/UserController/CourseList.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/WEB-INF/web.xml</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/Enrollment.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/web/hahaha.jsp</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/DAO/EnrollmentDAO.java</file>
-            <file>file:/C:/PRJ301_G3/ProjectPRJ_G3/src/java/Model/User.java</file>
-        </group>
-        <group name="class">
-            <file>file:/D:/FPT%20University/SE.7/PRJ301/Project/PRJ301_G3/ProjectPRJ_G3/web/WEB-INF/web.xml</file>
-        </group>
+        <group/>
+        <group/>
     </open-files>
 </project-private>

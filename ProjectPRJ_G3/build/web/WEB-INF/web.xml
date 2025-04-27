@@ -68,6 +68,10 @@
         <servlet-name>EditEnroll</servlet-name>
         <servlet-class>AdminController.EditEnroll</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListofUser</servlet-name>
+        <servlet-class>AdminController.ListofUser</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
@@ -131,5 +135,9 @@
     <servlet-mapping>
         <servlet-name>EditEnroll</servlet-name>
         <url-pattern>/editenroll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListofUser</servlet-name>
+        <url-pattern>/listofuser</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -119,14 +119,30 @@ public class EnrollmentDAO extends DBContext {
             stm.setInt(2, e.getAdmin().getAdminID());
             stm.setInt(3, e.getStatus().getStatusID());
             stm.setInt(4, e.getEnrollmentID());
-          
+
             int rowsAffected = stm.executeUpdate();
             return rowsAffected > 0;
 
-         } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return false;
     }
 
+    public int countAllEnrollbyUserID(int UserID) {
+        String sql = "SELECT COUNT(*) AS enrollment_count "
+                + "FROM Enrollments "
+                + "WHERE user_id = ?";
+        try {
+            PreparedStatement stm = connection.prepareStatement(sql);
+            stm.setInt(1, UserID);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("enrollment_count");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }

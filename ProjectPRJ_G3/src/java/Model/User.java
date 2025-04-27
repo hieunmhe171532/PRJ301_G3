@@ -20,7 +20,7 @@ public class User {
     private boolean gender;
     private Date dob;
     private Date createAt;
-
+    
     public User() {
     }
 

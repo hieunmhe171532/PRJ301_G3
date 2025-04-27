@@ -22,18 +22,23 @@ public class UserDAO extends DBContext {
 
     public List<User> getAllUser() {
         String sql = "SELECT us.user_id id, us.username uname, us.password pass, us.full_name name, "
-                + "us.email email, us.gender gender, us.dob dob, us.created_at createat   FROM Users";
+                + "us.email email, us.gender gender, us.dob dob, us.created_at createat FROM Users us";
         List<User> l = new ArrayList<>();
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
             ResultSet rs = stm.executeQuery();
             while (rs.next()) {
-                User user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getBoolean(6), rs.getDate(7), rs.getDate(8));
+                User user = new User(rs.getInt("id"),
+                        rs.getString("uname"),
+                        rs.getString("pass"), rs.getString("name"), rs.getString("email"),
+                        rs.getBoolean("gender"),
+                        rs.getDate("dob"),
+                        rs.getDate("createat"));
                 l.add(user);
             }
             return l;
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return null;
     }
@@ -104,6 +109,13 @@ public class UserDAO extends DBContext {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, e);
         }
         return rows > 0;
+    }
+    
+    public static void main(String[] args) {
+        List<User> list = new UserDAO().getAllUser();
+        for (User u : list) {
+            System.out.println(u.getFullName());
+        }
     }
 }
  
