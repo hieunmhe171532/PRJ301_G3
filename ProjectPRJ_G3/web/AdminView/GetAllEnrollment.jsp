@@ -50,67 +50,61 @@
 </head>
 
 <body>
-    <jsp:include page="/AdminView/AdminHeader.jsp" />
+<jsp:include page="/AdminView/AdminHeader.jsp" />
 
-    <div class="container py-5">
-        <h2 class="text-center">Enrollment Management</h2>
+<div class="container py-5">
+    <h2 class="text-center">Enrollment Management</h2>
 
-        <form action="getenrollments" method="get" class="mb-4">
-            <div class="input-group">
-                <label class="input-group-text" for="statusSelect">Choose a status:</label>
-                <select class="form-select" id="statusSelect" name="status" onchange="this.form.submit()">
-                    <option value="0" ${statusID == 0 ? 'selected' : ''}>All status</option>
-                    <c:forEach var="statu" items="${enrollmentstatus}">
-                        <option value="${statu.statusID}" ${statu.statusID == statusID ? 'selected' : ''}>
-                            ${statu.statusName}
-                        </option>
-                    </c:forEach>
-                </select>
-            </div>
-        </form>
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover custom-table" id="enrollmentTable">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Enrollment ID</th>
-                        <th>User ID</th>
-                        <th>User Full Name</th>
-                        <th>Course ID</th>
-                        <th>Course Name</th>
-                        <th>Note</th>
-                        <th>Enrolled At</th>
-                        <th>Status ID</th>
-                        <th>Status Name</th>
-                        <th>Action</th> <!-- Thêm cột Action -->
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="e" items="${enrollments}" varStatus="i">
-                        <tr>
-                            <td>${i.index + 1}</td>
-                            <td>${e.enrollmentID}</td>
-                            <td>${e.user.userID}</td>
-                            <td>${e.user.fullName}</td>
-                            <td>${e.course.courseID}</td>
-                            <td>${e.course.courseName}</td>
-                            <td>${e.note}</td>
-                            <td>${e.enrolledAt}</td>
-                            <td>${e.status.statusID}</td>
-                            <td>${e.status.statusName}</td>
-                            <td>
-                                <a href="editenroll?eid=${e.enrollmentID}" class="btn btn-sm btn-warning">Edit</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+    <form action="getenrollments" method="get" class="mb-4">
+        <div class="input-group">
+            <label class="input-group-text" for="statusSelect">Choose a status:</label>
+            <select class="form-select" id="statusSelect" name="status" onchange="this.form.submit()">
+                <option value="0" ${statusID == 0 ? 'selected' : ''}>All status</option>
+                <c:forEach var="statu" items="${listofstatus}">
+                    <option value="${statu.statusID}" ${statu.statusID == statusID ? 'selected' : ''}>
+                        ${statu.statusName}
+                    </option>
+                </c:forEach>
+            </select>
         </div>
-    </div>
+    </form>
 
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover custom-table" id="enrollmentTable">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Enrollment ID</th>
+                    <th>User Full Name</th>
+                    <th>Course Name</th>
+                    <th>Note</th>
+                    <th>Enrolled At</th>
+                    <th>Status Name</th>
+                    <th>Approved By (Admin)</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="e" items="${enrollments}" varStatus="i">
+                    <tr>
+                        <td>${i.index + 1}</td>
+                        <td>${e.enrollmentID}</td>
+                        <td>${e.user.fullName}</td>
+                        <td>${e.course.courseName}</td>
+                        <td>${e.note}</td>
+                        <td>${e.enrolledAt}</td>
+                        <td>${e.status.statusName}</td>
+                        <td>${e.admin.fullName}</td> <!-- Admin Name -->
+                        <td>
+                            <a href="editenrollment?eid=${e.enrollmentID}" class="btn btn-sm btn-warning">Edit</a>
+                        </td>
+                    </tr>
+
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

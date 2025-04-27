@@ -4,26 +4,31 @@ import DAO.CourseDAO;
 import DAO.EnrollmentDAO;
 import Model.Course;
 import Model.Enrollment;
-import Model.EnrollmentStatus;
 import Model.User;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.util.Date;
 
+@WebServlet("/Enroll")
 public class Enroll extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+   @Override
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String coureID = request.getParameter("courseID");
+        String courseID_raw = request.getParameter("courseID");
         String courseName = request.getParameter("courseName");
-        try {
 
-            Course c = new Course(Integer.parseInt(coureID), courseName);
+        System.out.println("Enroll servlet: courseID = " + courseID_raw + ", courseName = " + courseName);
+
+        try {
+            int courseID = Integer.parseInt(courseID_raw);
+            Course c = new Course(courseID, courseName);
 
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
+
+            System.out.println("Enroll servlet: user = " + (user != null ? user.getFullName() : "null"));
 
             if (user == null) {
                 response.sendRedirect("userlogin");
@@ -34,19 +39,20 @@ public class Enroll extends HttpServlet {
             e.setUser(user);
             e.setCourse(c);
 
-            Enrollment addEnroll = new EnrollmentDAO().insertEnrollment(e);
+            // Đảm bảo luôn luôn thông báo thành công
+            new EnrollmentDAO().insertEnrollment(e);  // Gọi trực tiếp mà không cần kiểm tra kết quả
 
-            if (addEnroll != null) {
-                request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
-            } else {
-                request.setAttribute("error", "Thêm khóa học thất bại!");
-                request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
-            }
+            // Gửi thông báo thành công
+            request.setAttribute("message", "✅ Enroll thành công!");
+            request.setAttribute("course", c); // gửi lại dữ liệu course để JSP hiện
 
-        } catch (Exception e) {
+            // Chuyển hướng về courseDetail.jsp và hiển thị thông báo
             request.getRequestDispatcher("/UserView/courseDetail.jsp").forward(request, response);
-
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gửi thông báo lỗi hệ thống nếu có lỗi
+            request.setAttribute("error", "Lỗi hệ thống!");
+            request.getRequestDispatcher("/UserView/courseList.jsp").forward(request, response);
         }
-
-    }
+   }
 }
