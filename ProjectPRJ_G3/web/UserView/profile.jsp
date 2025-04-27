@@ -17,7 +17,7 @@
         <title>Profile</title>
     </head>
     <body>
-
+        <jsp:include page="/UserView/UserHeader.jsp" />
         <div class="half">
             <div class="bg order-1 order-md-2" style="background-image: url('images/banner-01.jpg');"></div>
             <div class="contents order-2 order-md-1">

@@ -11,6 +11,7 @@
         <title>Change password</title>
     </head>
     <body>
+        <jsp:include page="/UserView/UserHeader.jsp" />
         <div class="container">
 
             <form action="changepassword" method="post" onsubmit="return validateForm();">

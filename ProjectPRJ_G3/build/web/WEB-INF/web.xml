@@ -72,6 +72,10 @@
         <servlet-name>ListofUser</servlet-name>
         <servlet-class>AdminController.ListofUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>UserController.LogOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
@@ -139,5 +143,9 @@
     <servlet-mapping>
         <servlet-name>ListofUser</servlet-name>
         <url-pattern>/listofuser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOut</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 </web-app>

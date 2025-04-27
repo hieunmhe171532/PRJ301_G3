@@ -33,7 +33,7 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <a href="#" class="btn btn-outline-light">Logout</a>
+                    <a href="logout" class="btn btn-outline-light">Logout</a>
                 </form>
             </div>
         </nav>
