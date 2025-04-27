@@ -2,6 +2,7 @@ package UserController;
 
 import DAO.EnrollmentDAO;
 import DAO.EnrollmentStatusDAO;
+import Model.Admin;
 import Model.Enrollment;
 import Model.EnrollmentStatus;
 import jakarta.servlet.ServletException;
@@ -15,6 +16,15 @@ public class AllEnrollment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        Admin admin = (Admin) session.getAttribute("admin");
+
+        if (admin == null) {
+            response.sendRedirect("adminlogin");
+            return;
+        }
+        
         String statusID = request.getParameter("status");
 
         if (statusID == null) {

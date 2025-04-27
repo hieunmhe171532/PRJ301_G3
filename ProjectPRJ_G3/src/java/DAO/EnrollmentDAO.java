@@ -119,11 +119,11 @@ public class EnrollmentDAO extends DBContext {
     }
 
     public boolean updateEnroll(Enrollment e) {
-        String sql = "update Enrollments set"
-                + "note = ?, "
-                + "approved_by = ?,"
-                + "status_id = ?"
-                + "where enrollment_id = ?";
+         String sql = "UPDATE Enrollments SET "
+               + "note = ?, "
+               + "approved_by = ?, "
+               + "status_id = ? "
+               + "WHERE enrollment_id = ?";
 
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
@@ -136,7 +136,7 @@ public class EnrollmentDAO extends DBContext {
             return rowsAffected > 0;
 
         } catch (SQLException ex) {
-            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(EnrollmentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }

@@ -74,8 +74,9 @@ public class EditEnroll extends HttpServlet {
             EnrollmentDAO dao = new EnrollmentDAO();
             boolean success = dao.updateEnroll(e);
 
-            if (success) {               
-                response.sendRedirect("editenroll");
+            if (success) {
+                request.getSession().setAttribute("successMessage", "Cập nhật thành công!");
+                response.sendRedirect("editenroll?eid=" + enrollID1);
             } else {
                 request.setAttribute("error", "Cập nhật thất bại. Vui lòng thử lại.");
                 request.getRequestDispatcher("/AdminView/EditEnroll.jsp").forward(request, response);

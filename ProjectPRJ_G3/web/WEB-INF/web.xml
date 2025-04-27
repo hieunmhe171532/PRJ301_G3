@@ -68,6 +68,10 @@
         <servlet-name>EditEnroll</servlet-name>
         <servlet-class>AdminController.EditEnroll</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogOut</servlet-name>
+        <servlet-class>UserController.LogOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserLogin</servlet-name>
         <url-pattern>/userlogin</url-pattern>
@@ -131,5 +135,9 @@
     <servlet-mapping>
         <servlet-name>EditEnroll</servlet-name>
         <url-pattern>/editenroll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOut</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 </web-app>
